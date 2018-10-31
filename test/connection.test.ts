@@ -3,6 +3,8 @@ import * as fs from 'fs';
 import * as path from 'path';
 import {MysqlConnectionConfig} from "../src/config";
 import {MysqlConnection} from "../src/connection";
+import {TestEntityDao} from "./test-entity-dao";
+import {TestEntity} from "./test-entity";
 
 describe("Mysql Connection integration test", () => {
 	
@@ -18,6 +20,24 @@ describe("Mysql Connection integration test", () => {
 		
 		//When
 		await mysqlConnection.connect();
+		await mysqlConnection.close();
+	});
+	
+	test('Should create test entity', async () => {
+		//Given
+		const mysqlConnectionConfig = new MysqlConnectionConfig(config.user, config.password, config.host, config.port, config.database);
+		
+		const mysqlConnection = new MysqlConnection(mysqlConnectionConfig);
+		const testEntityDao = new TestEntityDao(mysqlConnection);
+		const testEntity = new TestEntity();
+		
+		await mysqlConnection.connect();
+		
+		//When
+		const id = await testEntityDao.create(testEntity);
+		
+		console.log(id);
+		
 		await mysqlConnection.close();
 	});
 	

@@ -43,4 +43,12 @@ export class MysqlConnection {
 			});
 		});
 	}
+	
+	async executeQuery(sql: string, params?: any) {
+		return new Promise((resolve, reject) => {
+			this.connection.query(sql, params, function (error, results, fields) {
+				return error ? reject(error) : resolve(results);
+			})
+		});
+	}
 }

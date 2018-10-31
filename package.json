@@ -7,13 +7,15 @@
     "test": "test"
   },
   "scripts": {
+    "db-migrate": "node scripts/db_migrattion.js",
     "test": "jest"
   },
   "author": "Pavlo Karpovets",
   "license": "ISC",
   "dependencies": {
+    "lodash": "^4.17.11",
     "mysql": "^2.16.0",
-    "lodash": "^4.17.11"
+    "node-mysql-migration": "^0.2.1"
   },
   "devDependencies": {
     "@types/mysql": "^2.15.5",
