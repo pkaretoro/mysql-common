@@ -1,0 +1,37 @@
+{
+  "name": "mysql-common",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "Pavlo Karpovets",
+  "license": "ISC",
+  "dependencies": {
+    "mysql": "^2.16.0",
+    "lodash": "^4.17.11"
+  },
+  "devDependencies": {
+    "@types/mysql": "^2.15.5",
+    "@types/jest": "^23.3.8",
+    "@types/lodash": "^4.14.117",
+    "jest": "^23.6.0",
+    "ts-jest": "^23.10.4",
+    "typescript": "^3.1.4"
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ],
+    "transform": {
+      "\\.(ts|tsx)$": "<rootDir>/node_modules/ts-jest"
+    },
+    "testRegex": "/test/.*\\.(ts|tsx|js)$"
+  }
+}
