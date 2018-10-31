@@ -29,14 +29,17 @@ describe("Mysql Connection integration test", () => {
 		
 		const mysqlConnection = new MysqlConnection(mysqlConnectionConfig);
 		const testEntityDao = new TestEntityDao(mysqlConnection);
-		const testEntity = new TestEntity();
+		const entityName = 'My Test Entity';
+		const testEntity = new TestEntity(entityName);
 		
 		await mysqlConnection.connect();
 		
 		//When
 		const id = await testEntityDao.create(testEntity);
 		
-		console.log(id);
+		const fetchedEntity = await testEntityDao.findById(id);
+		
+		expect(fetchedEntity.name).toEqual(entityName);
 		
 		await mysqlConnection.close();
 	});

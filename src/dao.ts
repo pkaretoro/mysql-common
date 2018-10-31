@@ -5,7 +5,7 @@ export abstract class MysqlDao {
 	constructor(protected connection: MysqlConnection) {
 	}
 	
-	abstract async findById(): Promise<Entity>
+	abstract async findById(id: any): Promise<Entity>
 	
 	abstract async create(entity: Entity): Promise<number>
 	
